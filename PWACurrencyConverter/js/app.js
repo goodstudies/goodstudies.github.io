@@ -11,7 +11,7 @@
   };
 
   function getCurrencies() {
-    var url = 'http://api.fixer.io/latest?base=USD';
+    var url = 'https://api.fixer.io/latest?base=USD';
 
     // Fetch the latest data.
     var request = new XMLHttpRequest();
