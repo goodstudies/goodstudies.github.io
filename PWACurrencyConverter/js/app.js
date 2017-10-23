@@ -1,17 +1,17 @@
-  var selection = 0; //0=From Currency, 1=ToCurrency
+var app = {
+  from: "USD",
+  to: "INR",
+  fromCurrencyName: "US Dollar",
+  toCurrencyName: "Indian Rupee",
+  currencies: {},
+  currencyCodes: ["AUD", "BGN", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HRK", "HUF", "IDR", "ILS", "INR", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PLN", "RON", "RUB", "SEK", "SGD", "THB", "TRY", "USD", "ZAR"],  	currncyNames: ["Australian Dollar", "Bulgarian Lev", "Brazilian Real", "Canadian Dollar", "Swiss Franc", "Chinese Yuan", "Czech Koruna", "Danish Krone", "Euro", "British Pound", "Hong Kong Dollar", "Croatian Kuna", "Hungarian Forint", "Indonesian Rupiah", "Israeli Shekel", "Indian Rupee", "Japanese Yen", "Korean Won", "Mexican Peso", "Malaysian Ringgit", "Norwegian Krone", "New Zealand Dollar", "Philippine Peso", "Polish Zloty", "Romanian Leu", "Russian Rouble", "Swedish Krona", "Singapore Dollar", "Thai Baht", "Turkey Lira", "US Dollar", "South African Rand"]
+};
 
-  var app = {
-  	from: "USD",
-  	to: "INR",
-  	fromCurrencyName: "US Dollar",
-  	toCurrencyName: "Indian Rupee",
-  	currencies: {},
-  	currencyCodes: ["AUD", "BGN", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HRK", "HUF", "IDR", "ILS", "INR", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PLN", "RON", "RUB", "SEK", "SGD", "THB", "TRY", "USD", "ZAR"],  	currncyNames: ["Australian Dollar", "Bulgarian Lev", "Brazilian Real", "Canadian Dollar", "Swiss Franc", "Chinese Yuan", "Czech Koruna", "Danish Krone", "Euro", "British Pound", "Hong Kong Dollar", "Croatian Kuna", "Hungarian Forint", "Indonesian Rupiah", "Israeli Shekel", "Indian Rupee", "Japanese Yen", "Korean Won", "Mexican Peso", "Malaysian Ringgit", "Norwegian Krone", "New Zealand Dollar", "Philippine Peso", "Polish Zloty", "Romanian Leu", "Russian Rouble", "Swedish Krona", "Singapore Dollar", "Thai Baht", "Turkey Lira", "US Dollar", "South African Rand"]
-  };
-
-  var url = 'https://api.fixer.io/latest?base=USD';
+var url = 'https://api.fixer.io/latest?base=USD';
+var indicator;
 
 function getCurrencies() {
+  var indicator = phonon.indicator('Please wait...', false);
   // Fetch the latest data.
   var request = new XMLHttpRequest();
   request.onreadystatechange = function() {
@@ -20,6 +20,7 @@ function getCurrencies() {
         app.currencies = JSON.parse(request.response);
         updateCurrency();
         saveCurrencyRates();
+        indicator.close();
       } else {
         loadPreviousCurrencyRates();
       }
@@ -41,6 +42,8 @@ function loadPreviousCurrencyRates() {
   if (app.currencies) {
     app.currencies = JSON.parse(app.currencies);
   }
+
+  indicator.close();
 }
 
 function onSelect(currency, type) {
@@ -70,6 +73,8 @@ function updateCurrency() {
   var calculated = ((to * ratio) / 100) * valueToConvert;
 
   document.getElementById('result').innerHTML = (calculated).toFixed(2);
+
+  document.getElementById('dbUpdated').innerHTML = app.currencies.date;
 }
 
 app.from.innerHTML = app.fromCurrencyName;
