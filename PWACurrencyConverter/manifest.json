@@ -24,7 +24,6 @@
       }],
     "start_url": "/PWACurrencyConverter/index.htm",
     "display": "standalone",
-    "orientation": "portrait",
     "background_color": "#2499f2",
     "theme_color": "#2499f2"
   }
