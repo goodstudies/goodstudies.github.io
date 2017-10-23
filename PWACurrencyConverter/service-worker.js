@@ -2,7 +2,6 @@ var dataCacheName = 'currencyData-v1';
 var cacheName = 'currencyPWA-1';
 var filesToCache = [
   '/',
-  '/PWACurrencyConverter',
   '/PWACurrencyConverter/index.htm',
   '/PWACurrencyConverter/favicon.ico',
   '/PWACurrencyConverter/js/app.js',
