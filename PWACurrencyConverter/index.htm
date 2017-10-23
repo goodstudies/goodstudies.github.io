@@ -6,7 +6,7 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
 
         <link rel="stylesheet" href="css/phonon.min.css" />
-        <title>PWACC</title>
+        <title>PWA-CC</title>
     </head>
     <body>
         <div id="currency-from" class="panel-full">
@@ -49,6 +49,7 @@
                     <li class="padded-list" onclick="onSelect('SGD', 0)">Singapore Dollar</li>
                     <li class="padded-list" onclick="onSelect('THB', 0)">Thai Baht</li>
                     <li class="padded-list" onclick="onSelect('TRY', 0)">Turkey Lira</li>
+                    <li class="padded-list" onclick="onSelect('USD', 0)">US Dollar</li>
                     <li class="padded-list" onclick="onSelect('ZAR', 0)">South African Rand</li>
             </div>
         </div>
@@ -93,6 +94,7 @@
                     <li class="padded-list" onclick="onSelect('SGD', 1)">Singapore Dollar</li>
                     <li class="padded-list" onclick="onSelect('THB', 1)">Thai Baht</li>
                     <li class="padded-list" onclick="onSelect('TRY', 1)">Turkey Lira</li>
+                    <li class="padded-list" onclick="onSelect('USD', 1)">US Dollar</li>
                     <li class="padded-list" onclick="onSelect('ZAR', 1)">South African Rand</li>
                 </ul>
             </div>
@@ -117,14 +119,14 @@
             <div class="content padded-full">
                 <div class="row" style="margin-top: 3em;" >
                     <h4 class="phone-2 tablet-2 column">From</h4>
-                    <h4 class="phone-10 tablet-10 column"><b id="fromCurrency" data-panel-id="currency-from">Indian Rupee</b></h4>
+                    <h4 class="phone-10 tablet-10 column"><b id="fromCurrency" data-panel-id="currency-from">US Dollar</b></h4>
                 </div>
                 <div class="row" style="margin-top: 3em;">
                     <h4 class="phone-2 tablet-2 column">To</h4>
                     <h4 class="phone-10 tablet-10 column"><b id="toCurrency" data-panel-id="currency-to">Indian Rupee</b></h4>
                 </div>
                 <h4 style="margin-top: 3em;">Amount</h4>
-                <input type="number" id="amount">
+                <input style="font-size: 1.5em;" type="number" id="amount" value="1" onchange="updateCurrency()" oninput="updateCurrency()" onpaste="updateCurrency()">
                 <h4 style="margin-top: 3em;">Result : <b id="result">0.0</b></h4>
             </div>
         </home>
