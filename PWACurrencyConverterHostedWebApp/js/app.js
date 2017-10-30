@@ -11,6 +11,7 @@
 var CurrencyConversionWebAPI = 'https://api.fixer.io/latest?base=USD';
 var HTTP_OK = 200;
 var indicator;
+var lastConversionDone;
 
 var app = {
   from: "USD",
@@ -22,8 +23,11 @@ var app = {
 };
 
 //An Ajax method to retrieve the various country's currency rates based on USD
-function getCurrencies() {
-  var indicator = phonon.indicator('Please wait...', false);
+function getCurrencies(isLoaderNeeded) {
+  if(isLoaderNeeded) {
+    var indicator = phonon.indicator('Please wait...', false);
+  }
+  
   // Fetch the latest data.
   var request = new XMLHttpRequest();
   request.onreadystatechange = function() {
@@ -50,7 +54,6 @@ function saveCurrencyRates() {
   var currencies = JSON.stringify(app.currencies);
   localStorage.currencies = currencies;
 }
-
 
 function saveLastConversion(converted) {
   localStorage.lastConversion = converted;
@@ -102,6 +105,7 @@ function updateCurrency() {
 
   //Save this conversion in local database to show in Windows 10 tiles
   var converted = app.from + " - " + app.to + " = " + ratio.toFixed(2);
+  lastConversionDone = converted;
   saveLastConversion(converted);
 }
 
@@ -164,7 +168,7 @@ function showTileInWindows10 () {
       
     var text = tileContent.createElement("text");
     text.setAttribute("hint-wrap", "true");
-    text.innerText = "Last Converted Currency : " + localStorage.lastConversion; 
+    text.innerText = "Last Converted Currency : " + lastConversionDone; 
     bindingMedium.appendChild(text);
 
     var notifications = Windows.UI.Notifications;
@@ -178,7 +182,7 @@ function showTileInWindows10 () {
 app.from.innerHTML = app.fromCurrencyName;
 app.to.innerHTML = app.toCurrencyName;
 
-getCurrencies();
+getCurrencies(true);
 
 showTileInWindows10();
 
