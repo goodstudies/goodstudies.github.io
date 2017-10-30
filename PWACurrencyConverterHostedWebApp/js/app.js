@@ -118,8 +118,8 @@ function showToastInWindows10 () {
     // Override the app logo
     var appLogo = toastContent.createElement("image");
     appLogo.setAttribute("placement", "appLogoOverride");
-    appLogo.setAttribute("src", "../img/icon-152x152.png");
-    appLogo.setAttribute("alt", "PWACC");
+    appLogo.setAttribute("src", "https://goodstudies.github.io/PWACurrencyConverterHostedWebApp/img/icon-152x152.png");
+    appLogo.setAttribute("alt", "PWA-CC");
     binding.appendChild(appLogo);
 
     var notifications = Windows.UI.Notifications;
@@ -148,13 +148,13 @@ function showTileInWindows10 () {
       
     var peekImage = tileContent.createElement("image");
     peekImage.setAttribute("placement", "peek");
-    peekImage.setAttribute("src", "../img/icon-152x152.png");
-    peekImage.setAttribute("alt", "PWACC");
+    peekImage.setAttribute("src", "https://goodstudies.github.io/PWACurrencyConverterHostedWebApp/img/icon-152x152.png");
+    peekImage.setAttribute("alt", "PWA-CC");
     bindingMedium.appendChild(peekImage);
       
     var text = tileContent.createElement("text");
     text.setAttribute("hint-wrap", "true");
-    text.innerText = "Demo Message";
+    text.innerText = "Last Converted Currency : ";
     bindingMedium.appendChild(text);
 
     var notifications = Windows.UI.Notifications;
