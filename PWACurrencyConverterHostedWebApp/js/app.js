@@ -97,7 +97,7 @@ function updateCurrency() {
 
 function showTileInWindows10() {
   if (typeof Windows !== 'undefined'&& typeof Windows.UI !== 'undefined' && typeof Windows.UI.Notifications !== 'undefined') {
-    alert("Windows 10 Supported.")
+    console.log("Windows 10 Supported.")
 
     var tileContent = new Windows.Data.Xml.Dom.XmlDocument();
     
@@ -126,7 +126,7 @@ function showTileInWindows10() {
     var tileNotification = new notifications.TileNotification(tileContent);
     notifications.TileUpdateManager.createTileUpdaterForApplication().update(tileNotification);
   } else {
-    alert("Windows 10 NOT Supported.")
+    console.log("Windows 10 NOT Supported.")
   }
 }
 
