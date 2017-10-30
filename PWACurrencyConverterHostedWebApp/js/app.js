@@ -51,6 +51,11 @@ function saveCurrencyRates() {
   localStorage.currencies = currencies;
 }
 
+
+function saveLastConversion(converted) {
+  localStorage.lastConversion = converted;
+}
+
 //Loading the currencies from local database during the initialization of UI.
 function loadPreviousCurrencyRates() {
   app.currencies = localStorage.currencies;
@@ -88,11 +93,16 @@ function updateCurrency() {
     valueToConvert = 1;
   }
 
-  var calculated = ((to * ratio) / 100) * valueToConvert;
+  var ratio = ((to * ratio) / 100);
+  var calculated = ratio * valueToConvert;
 
   document.getElementById('result').innerHTML = (calculated).toFixed(2);
 
   document.getElementById('dbUpdated').innerHTML = app.currencies.date;
+
+  //Save this conversion in local database to show in Windows 10 tiles
+  var converted = app.from + " - " + app.to + " = " + ratio.toFixed(2);
+  saveLastConversion(converted);
 }
 
 function showToastInWindows10 () {
@@ -154,7 +164,7 @@ function showTileInWindows10 () {
       
     var text = tileContent.createElement("text");
     text.setAttribute("hint-wrap", "true");
-    text.innerText = "Last Converted Currency : ";
+    text.innerText = "Last Converted Currency : " + localStorage.lastConversion;
     bindingMedium.appendChild(text);
 
     var notifications = Windows.UI.Notifications;
