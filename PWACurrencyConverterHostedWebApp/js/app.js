@@ -95,7 +95,38 @@ function updateCurrency() {
   document.getElementById('dbUpdated').innerHTML = app.currencies.date;
 }
 
-function showTileInWindows10() {
+function showToastInWindows10 () {
+  if (typeof Windows !== 'undefined'&& typeof Windows.UI !== 'undefined' && typeof Windows.UI.Notifications !== 'undefined') {
+    console.log("Windows 10 Supported.");
+    var toastContent = new Windows.Data.Xml.Dom.XmlDocument();
+    
+    var toast = toastContent.createElement("toast");
+    toastContent.appendChild(toast);
+      
+    var visual = toastContent.createElement("visual");
+    toast.appendChild(visual);
+      
+    var binding = toastContent.createElement("binding");
+    binding.setAttribute("template", "ToastGeneric");
+    visual.appendChild(binding);
+      
+    // Title text
+    var text = toastContent.createElement("text");
+    text.innerText = "Hi! Now you can check the currency rates anytime.";
+    binding.appendChild(text);
+            
+    // Override the app logo
+    var appLogo = toastContent.createElement("image");
+    appLogo.setAttribute("placement", "appLogoOverride");
+    appLogo.setAttribute("src", "../img/icon-152x152.png");
+    appLogo.setAttribute("alt", "PWACC");
+    binding.appendChild(appLogo);
+  } else {
+    console.log("Windows 10 NOT Supported.");
+  }
+}
+
+function showTileInWindows10 () {
   if (typeof Windows !== 'undefined'&& typeof Windows.UI !== 'undefined' && typeof Windows.UI.Notifications !== 'undefined') {
     console.log("Windows 10 Supported.");
 
@@ -113,8 +144,8 @@ function showTileInWindows10() {
       
     var peekImage = tileContent.createElement("image");
     peekImage.setAttribute("placement", "peek");
-    peekImage.setAttribute("src", "https://unsplash.it/150/150/?random");
-    peekImage.setAttribute("alt", "Random demo image");
+    peekImage.setAttribute("src", "../img/icon-152x152.png");
+    peekImage.setAttribute("alt", "PWACC");
     bindingMedium.appendChild(peekImage);
       
     var text = tileContent.createElement("text");
@@ -136,3 +167,5 @@ app.to.innerHTML = app.toCurrencyName;
 getCurrencies();
 
 showTileInWindows10();
+
+showToastInWindows10();
