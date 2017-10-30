@@ -11,7 +11,6 @@
 var CurrencyConversionWebAPI = 'https://api.fixer.io/latest?base=USD';
 var HTTP_OK = 200;
 var indicator;
-var lastConversionDone;
 
 var app = {
   from: "USD",
@@ -117,7 +116,6 @@ function updateCurrency() {
 
   //Save this conversion in local database to show in Windows 10 tiles
   var converted = app.from + " - " + app.to + " = " + ratio.toFixed(2);
-  lastConversionDone = converted;
   saveLastConversion(converted);
 }
 
@@ -180,7 +178,7 @@ function showTileInWindows10 () {
       
     var text = tileContent.createElement("text");
     text.setAttribute("hint-wrap", "true");
-    text.innerText = "Last Converted Currency : " + lastConversionDone; 
+    text.innerText = "Last Converted Currency : " + sessionStorage.getItem("lastConversion"); 
     bindingMedium.appendChild(text);
 
     var notifications = Windows.UI.Notifications;
