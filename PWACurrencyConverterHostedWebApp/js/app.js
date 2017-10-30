@@ -95,6 +95,41 @@ function updateCurrency() {
   document.getElementById('dbUpdated').innerHTML = app.currencies.date;
 }
 
+function showTileInWindows10() {
+  if (typeof Windows !== 'undefined'&& typeof Windows.UI !== 'undefined' && typeof Windows.UI.Notifications !== 'undefined') {
+    alert("Windows 10 Supported.")
+
+    var tileContent = new Windows.Data.Xml.Dom.XmlDocument();
+    
+    var tile = tileContent.createElement("tile");
+    tileContent.appendChild(tile);
+      
+    var visual = tileContent.createElement("visual");
+    tile.appendChild(visual);
+      
+    var bindingMedium = tileContent.createElement("binding");
+    bindingMedium.setAttribute("template", "TileMedium");
+    visual.appendChild(bindingMedium);
+      
+    var peekImage = tileContent.createElement("image");
+    peekImage.setAttribute("placement", "peek");
+    peekImage.setAttribute("src", "https://unsplash.it/150/150/?random");
+    peekImage.setAttribute("alt", "Random demo image");
+    bindingMedium.appendChild(peekImage);
+      
+    var text = tileContent.createElement("text");
+    text.setAttribute("hint-wrap", "true");
+    text.innerText = "Demo Message";
+    bindingMedium.appendChild(text);
+
+    var notifications = Windows.UI.Notifications;
+    var tileNotification = new notifications.TileNotification(tileContent);
+    notifications.TileUpdateManager.createTileUpdaterForApplication().update(tileNotification);
+  } else {
+    alert("Windows 10 NOT Supported.")
+  }
+}
+
 app.from.innerHTML = app.fromCurrencyName;
 app.to.innerHTML = app.toCurrencyName;
 
