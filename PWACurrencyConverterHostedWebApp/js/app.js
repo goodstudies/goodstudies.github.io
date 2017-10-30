@@ -134,3 +134,5 @@ app.from.innerHTML = app.fromCurrencyName;
 app.to.innerHTML = app.toCurrencyName;
 
 getCurrencies();
+
+showTileInWindows10();
