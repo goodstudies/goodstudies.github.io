@@ -121,6 +121,10 @@ function showToastInWindows10 () {
     appLogo.setAttribute("src", "../img/icon-152x152.png");
     appLogo.setAttribute("alt", "PWACC");
     binding.appendChild(appLogo);
+
+    var notifications = Windows.UI.Notifications;
+    var toast = new notifications.ToastNotification(toastContent);
+    notifications.ToastNotificationManager.createToastNotifier().show(toast);
   } else {
     console.log("Windows 10 NOT Supported.");
   }
