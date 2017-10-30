@@ -55,19 +55,7 @@ function saveCurrencyRates() {
 }
 
 function saveLastConversion(converted) {
-  console.log("Coverted : " + converted);
-
   localStorage.lastConversion = converted;
-
-  console.log("Coverted From localStorage : " + localStorage.lastConversion);
-
-  if (typeof(Storage) !== "undefined") {
-    sessionStorage.setItem("lastConversion", converted);
-
-    console.log("Coverted From sessionStorage : " + sessionStorage.getItem("lastConversion"));
-  } else {
-    console.log("sessionStorage is not supported.");
-  }
 }
 
 //Loading the currencies from local database during the initialization of UI.
@@ -178,7 +166,7 @@ function showTileInWindows10 () {
       
     var text = tileContent.createElement("text");
     text.setAttribute("hint-wrap", "true");
-    text.innerText = "Last Converted Currency : " + sessionStorage.getItem("lastConversion"); 
+    text.innerText = "Currency Conversion\n" + JSON.stringify(app.currencies); 
     bindingMedium.appendChild(text);
 
     var notifications = Windows.UI.Notifications;
