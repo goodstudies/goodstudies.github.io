@@ -166,7 +166,7 @@ function showTileInWindows10 () {
       
     var text = tileContent.createElement("text");
     text.setAttribute("hint-wrap", "true");
-    text.innerText = "Currency Conversion\n" + JSON.stringify(app.currencies); 
+    text.innerText = "" + localStorage.lastConversion; 
     bindingMedium.appendChild(text);
 
     var notifications = Windows.UI.Notifications;
