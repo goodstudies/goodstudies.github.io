@@ -175,7 +175,7 @@ function showTileInWindows10 () {
       
     var text = tileContent.createElement("text");
     text.setAttribute("hint-wrap", "true");
-    text.innerText = (localStorage.otherConversions == 'undefined') ? localStorage.otherConversions : "PWA Currency Converter"; 
+    text.innerText = (localStorage.otherConversions != 'undefined') ? localStorage.otherConversions : "PWA Currency Converter"; 
     bindingMedium.appendChild(text);
 
     var notifications = Windows.UI.Notifications;
