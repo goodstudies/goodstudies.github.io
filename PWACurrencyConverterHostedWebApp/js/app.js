@@ -55,22 +55,21 @@ function saveCurrencyRates() {
   localStorage.currencies = currencies;
 }
 
-function saveLastConversion(converted) {
-  localStorage.lastConversion = converted;
-}
-
+//Save the three different currency rates over indian rupee to show in tile message.
 function saveOtherCurrencyRatesOverIndianRupee() {
   localStorage.otherConversions = "INR Rates :\n" +
-  "USD : " + currencyValueDifference("USD", "INR") + "\n" 
-  "EUR : " + currencyValueDifference("EUR", "INR") + "\n" 
-  "GBP : " + currencyValueDifference("GBP", "INR");
+  "USD : " + currencyRatioDifference("USD", "INR").toFixed(2) + "\n" +
+  "EUR : " + currencyRatioDifference("EUR", "INR").toFixed(2) + "\n" +
+  "GBP : " + currencyRatioDifference("GBP", "INR").toFixed(2);
 }
 
-function currencyValueDifference(fromCurrency, toCurrency) {
-  var from = (fromCurrency != "USD") ? app.currencies.rates[fromCurrency] : 1;
-  var to = (toCurrency != "USD") ? app.currencies.rates[toCurrency] : 1;
+function currencyRatioDifference(fromCurrency, toCurrency) {
+  var OneUSD = 1;
 
-  var differenceWithUSD = (1/from) * 100;
+  var from = (fromCurrency != "USD") ? app.currencies.rates[fromCurrency] : OneUSD;
+  var to = (toCurrency != "USD") ? app.currencies.rates[toCurrency] : OneUSD;
+
+  var differenceWithUSD = (OneUSD/from) * 100;
 
   return ((to * differenceWithUSD) / 100);
 }
@@ -100,30 +99,22 @@ function onSelect(currency, type) {
 
 //Method to calculate the currencies between multiple countires and update the result.
 function updateCurrency() {
-  var from = (app.from != "USD") ? app.currencies.rates[app.from] : 1;
-  var to = (app.to != "USD") ? app.currencies.rates[app.to] : 1;
-
-
-  var ratio = (1/from) * 100;
-
   var valueToConvert = document.getElementById('amount').value;
 
   if(valueToConvert <= 0) {
     valueToConvert = 1;
   }
 
-  var ratio = ((to * ratio) / 100);
+  var to = (app.to != "USD") ? app.currencies.rates[app.to] : 1;
+  var ratio = currencyRatioDifference(app.from, app.to);
   var calculated = ratio * valueToConvert;
 
   document.getElementById('result').innerHTML = (calculated).toFixed(2);
 
   document.getElementById('dbUpdated').innerHTML = app.currencies.date;
-
-  //Save this conversion in local database to show in Windows 10 tiles
-  var converted = app.from + " - " + app.to + " = " + ratio.toFixed(2);
-  saveLastConversion(converted);
 }
 
+//Method to show Toast message during the app open. Its only work in Windows 10 platform and ignore for other platforms.
 function showToastInWindows10 () {
   if (typeof Windows !== 'undefined'&& typeof Windows.UI !== 'undefined' && typeof Windows.UI.Notifications !== 'undefined') {
     console.log("Windows 10 Supported.");
@@ -159,6 +150,7 @@ function showToastInWindows10 () {
   }
 }
 
+//Method to show medium size Tile message in start screen. Its only work in Windows 10 platform and ignore for other platforms.
 function showTileInWindows10 () {
   if (typeof Windows !== 'undefined'&& typeof Windows.UI !== 'undefined' && typeof Windows.UI.Notifications !== 'undefined') {
     console.log("Windows 10 Supported.");
