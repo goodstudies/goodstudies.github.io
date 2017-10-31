@@ -35,6 +35,7 @@ function getCurrencies(isLoaderNeeded) {
         app.currencies = JSON.parse(request.response);
         updateCurrency();
         saveCurrencyRates();
+        saveOtherCurrencyRatesOverIndianRupee();
         indicator.close();
       } else {
         loadPreviousCurrencyRates();
@@ -56,6 +57,22 @@ function saveCurrencyRates() {
 
 function saveLastConversion(converted) {
   localStorage.lastConversion = converted;
+}
+
+function saveOtherCurrencyRatesOverIndianRupee() {
+  localStorage.otherConversions = "INR Rates :\n" +
+  "USD : " + currencyValueDifference("USD", "INR") + "\n" 
+  "EUR : " + currencyValueDifference("EUR", "INR") + "\n" 
+  "GBP : " + currencyValueDifference("GBP", "INR");
+}
+
+function currencyValueDifference(fromCurrency, toCurrency) {
+  var from = (fromCurrency != "USD") ? app.currencies.rates[fromCurrency] : 1;
+  var to = (toCurrency != "USD") ? app.currencies.rates[toCurrency] : 1;
+
+  var differenceWithUSD = (1/from) * 100;
+
+  return ((to * differenceWithUSD) / 100);
 }
 
 //Loading the currencies from local database during the initialization of UI.
@@ -166,7 +183,7 @@ function showTileInWindows10 () {
       
     var text = tileContent.createElement("text");
     text.setAttribute("hint-wrap", "true");
-    text.innerText = "" + localStorage.lastConversion; 
+    text.innerText = localStorage.otherConversions; 
     bindingMedium.appendChild(text);
 
     var notifications = Windows.UI.Notifications;
