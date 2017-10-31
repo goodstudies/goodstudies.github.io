@@ -172,10 +172,10 @@ function showTileInWindows10 () {
     peekImage.setAttribute("src", "https://goodstudies.github.io/PWACurrencyConverterHostedWebApp/img/icon-152x152.png");
     peekImage.setAttribute("alt", "PWA-CC");
     bindingMedium.appendChild(peekImage);
-      
+
     var text = tileContent.createElement("text");
     text.setAttribute("hint-wrap", "true");
-    text.innerText = (localStorage.otherConversions != 'undefined') ? localStorage.otherConversions : "PWA Currency Converter"; 
+    text.innerText = (localStorage.otherConversions !== 'undefined') ? localStorage.otherConversions : "PWA Currency Converter"; 
     bindingMedium.appendChild(text);
 
     var notifications = Windows.UI.Notifications;
