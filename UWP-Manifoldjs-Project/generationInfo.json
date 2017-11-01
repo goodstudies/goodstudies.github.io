@@ -1,0 +1,10 @@
+{
+    "generationTool": "manifoldjs",
+    "generationToolVersion": "0.7.6",
+    "platformId": "windows10",
+    "platformPackage": "manifoldjs-windows10",
+    "platformVersion": "0.1.8",
+    "generatedFrom": "CLI",
+    "generationDate": "2017-11-01 07:30:48 Z",
+    "generatedURL": "http://127.0.0.1:8887/PWACurrencyConverterHostedWebApp/manifest.json"
+}
