@@ -61,9 +61,9 @@ function saveLastConversion(converted) {
 
 function saveOtherCurrencyRatesOverIndianRupee() {
   localStorage.otherConversions = "INR Rates :\n" +
-  "USD : " + currencyValueDifference("USD", "INR") + "\n" 
-  "EUR : " + currencyValueDifference("EUR", "INR") + "\n" 
-  "GBP : " + currencyValueDifference("GBP", "INR");
+  "USD : " + currencyValueDifference("USD", "INR").toFixed(2) + "\n" +
+  "EUR : " + currencyValueDifference("EUR", "INR").toFixed(2) + "\n" +
+  "GBP : " + currencyValueDifference("GBP", "INR").toFixed(2);
 }
 
 function currencyValueDifference(fromCurrency, toCurrency) {
@@ -183,7 +183,7 @@ function showTileInWindows10 () {
 
     var text = tileContent.createElement("text");
     text.setAttribute("hint-wrap", "true");
-    text.innerText = (localStorage.otherConversions !== 'undefined') ? localStorage.otherConversions : "PWA Currency Converter"; 
+    text.innerText = "" + localStorage.otherConversions; 
     bindingMedium.appendChild(text);
 
     var notifications = Windows.UI.Notifications;
