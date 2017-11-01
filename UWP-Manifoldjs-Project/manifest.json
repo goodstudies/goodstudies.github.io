@@ -28,7 +28,7 @@
             "type": "image/png"
         }
     ],
-    "start_url": "http://127.0.0.1:8887/PWACurrencyConverterHostedWebApp/index.htm",
+    "start_url": "https://goodstudies.github.io/PWACurrencyConverterHostedWebApp/index.htm",
     "display": "standalone",
     "background_color": "#2499f2",
     "theme_color": "#2499f2"

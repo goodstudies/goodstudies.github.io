@@ -5,7 +5,7 @@ xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
 xmlns:build="http://schemas.microsoft.com/developer/appx/2015/build"
 IgnorableNamespaces="uap mp build"> 
 	<Identity Name="INSERT-YOUR-PACKAGE-IDENTITY-NAME-HERE" Publisher="CN=INSERT-YOUR-PACKAGE-IDENTITY-PUBLISHER-HERE" Version="1.0.0.0" ProcessorArchitecture="neutral" /> 
-	<mp:PhoneIdentity PhoneProductId="55bb1fb3-1bed-a439-eb47-b2fe0b978b27" PhonePublisherId="00000000-0000-0000-0000-000000000000"/> 
+	<mp:PhoneIdentity PhoneProductId="9d855386-8105-9469-1d86-addc5b50c39f" PhonePublisherId="00000000-0000-0000-0000-000000000000"/> 
 
 	<build:Metadata>
 		<build:Item Name="GenerationTool" Version="manifoldjs" />
@@ -14,8 +14,8 @@ IgnorableNamespaces="uap mp build">
     <build:Item Name="PlatformPackage" Value="manifoldjs-windows10" />
     <build:Item Name="PlatformVersion" Version="0.1.8" />
 		<build:Item Name="GeneratedFrom" Value="CLI" />
-		<build:Item Name="GenerationDate" Value="2017-11-01 07:30:48 Z" />
-		<build:Item Name="GeneratedURL" Value="http://127.0.0.1:8887/PWACurrencyConverterHostedWebApp/manifest.json" />
+		<build:Item Name="GenerationDate" Value="2017-11-01 08:52:14 Z" />
+		<build:Item Name="GeneratedURL" Value="https://goodstudies.github.io/PWACurrencyConverterHostedWebApp/manifest.json" />
 	</build:Metadata>
 
 	<Properties> 
@@ -33,7 +33,7 @@ IgnorableNamespaces="uap mp build">
 	 </Resources> 
 
 	<Applications> 
-		<Application Id="PWACC" StartPage="http://127.0.0.1:8887/PWACurrencyConverterHostedWebApp/index.htm"> 
+		<Application Id="PWACC" StartPage="https://goodstudies.github.io/PWACurrencyConverterHostedWebApp/index.htm"> 
 			<uap:VisualElements 
 				DisplayName="PWA-CC" 
 				Square150x150Logo="images\Square150x150Logo.png" 
@@ -51,7 +51,7 @@ IgnorableNamespaces="uap mp build">
 			</uap:VisualElements> 
 			<uap:ApplicationContentUriRules>
 				
-				<uap:Rule Type="include" WindowsRuntimeAccess="none" Match="http://127.0.0.1:8887/" />
+				<uap:Rule Type="include" WindowsRuntimeAccess="none" Match="https://goodstudies.github.io/" />
 			</uap:ApplicationContentUriRules>
 		</Application> 
 	</Applications> 

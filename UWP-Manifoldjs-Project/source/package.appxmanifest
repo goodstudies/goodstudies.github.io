@@ -7,11 +7,11 @@
   IgnorableNamespaces="uap mp build">
 
   <Identity
-    Name="d7fa92d4-2fb0-7eda-2cd9-59ba5956e591"
+    Name="fe9af237-c405-8dcb-fed8-2dd0b97d81e3"
     Version="1.0.0.0"
     Publisher="CN=user" />
 
-  <mp:PhoneIdentity PhoneProductId="d7fa92d4-2fb0-7eda-2cd9-59ba5956e591" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="fe9af237-c405-8dcb-fed8-2dd0b97d81e3" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
   
   <build:Metadata>
     <build:Item Name="GenerationTool" Version="manifoldjs" />
@@ -20,8 +20,8 @@
     <build:Item Name="PlatformPackage" Value="manifoldjs-windows10" />
     <build:Item Name="PlatformVersion" Version="0.1.8" />
     <build:Item Name="GeneratedFrom" Value="CLI" />
-    <build:Item Name="GenerationDate" Value="2017-11-01 07:30:48 Z" />
-		<build:Item Name="GeneratedURL" Value="http://127.0.0.1:8887/PWACurrencyConverterHostedWebApp/manifest.json" />
+    <build:Item Name="GenerationDate" Value="2017-11-01 08:52:14 Z" />
+		<build:Item Name="GeneratedURL" Value="https://goodstudies.github.io/PWACurrencyConverterHostedWebApp/manifest.json" />
   </build:Metadata>
 
   <Properties>
@@ -41,7 +41,7 @@
   <Applications>
     <Application
       Id="PWACC"
-      StartPage="http://127.0.0.1:8887/PWACurrencyConverterHostedWebApp/index.htm">
+      StartPage="https://goodstudies.github.io/PWACurrencyConverterHostedWebApp/index.htm">
 
       <uap:VisualElements
         DisplayName="PWA-CC"
@@ -61,7 +61,7 @@
       
       <uap:ApplicationContentUriRules>
         
-				<uap:Rule Type="include" WindowsRuntimeAccess="none" Match="http://127.0.0.1:8887/" />
+				<uap:Rule Type="include" WindowsRuntimeAccess="none" Match="https://goodstudies.github.io/" />
       </uap:ApplicationContentUriRules>
     </Application>
   </Applications>
